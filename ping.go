@@ -35,11 +35,13 @@ func keepalive(c *client, conn io.Writer) {
 	var checkInterval int64
 	var pingSent time.Time
 
-	if c.options.KeepAlive > 10 {
+	/*if c.options.KeepAlive > 10 {
 		checkInterval = 5
 	} else {
 		checkInterval = c.options.KeepAlive / 2
-	}
+	}*/
+
+	checkInterval = 1200
 
 	intervalTicker := time.NewTicker(time.Duration(checkInterval * int64(time.Second)))
 	defer intervalTicker.Stop()
